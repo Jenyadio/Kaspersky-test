@@ -51,6 +51,15 @@ function closeMobilePopup() {
     mobilePopupOpened.classList.remove('mobile-popup__opened-active');
     body.classList.remove('stop-scroll');
 }
+
+window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset;
+    const windowHeight = document.documentElement.scrollHeight;
+
+    if ((currentScroll + window.innerHeight) > (windowHeight - 20)) {
+        mobilePopupClosed.classList.remove('mobile-popup__closed-active');
+    }
+})
     
 infoIcon.addEventListener('click', openInfoPopup);
 offerUsers.addEventListener('change', calculateOffer);
